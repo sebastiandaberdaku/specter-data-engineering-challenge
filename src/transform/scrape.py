@@ -3,7 +3,7 @@ import re
 from abc import ABC
 from dataclasses import dataclass, field, fields
 from datetime import date, datetime
-from typing import TypeVar, Never
+from typing import TypeVar
 
 from dateutil.relativedelta import relativedelta
 from jsonschema import validate
@@ -68,26 +68,6 @@ def _validate(value: str | None, t: type[T], field_name: str) -> T | None:
             raise ValidationException(f"'{field_name}' must be of type '{t.__name__}': {str(e)}.")
     else:
         raise ValidationException(f"'{field_name}' must be of type '{t.__name__}'!")
-
-
-def _validate_json(value: str | None, field_name: str, default: list[Never] | dict[Never]) -> list | dict:
-    """
-    Validates a json string.
-
-    :param value: Json string to validate.
-    :param field_name: Name of the field.
-    :param default: The Default value for the field can be either an empty list or an empty dictionary.
-    :return: The converted value.
-    """
-    if value is None:
-        return default
-    elif isinstance(value, str):
-        try:
-            return json.loads(value)
-        except ValueError as e:
-            raise ValidationException(f"'{field_name}' is not a valid json string: {str(e)}")
-    else:
-        raise ValidationException(f"'{field_name}' is not a valid json string, got '{type(value).__name__}' instead!")
 
 
 @dataclass
