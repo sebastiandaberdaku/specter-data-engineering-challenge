@@ -1,5 +1,7 @@
 # specter-data-engineering-challenge
-The Specter Data Engineering Challenge! 
+## The Specter Data Engineering Challenge! 
+
+This package contains [my](https://sebastiandaberdaku.github.io/resume) solutions to this challenge.
 
 The challenge specification is available [here](Specter%20-%20Senior%20Data%20Engineer%20Challenge.pdf).
 
@@ -10,12 +12,14 @@ conda activate specter
 pip install -r requirements.txt
 ```
 
-Run `main.py` with the following command:
+Run the analysis with the following command:
 ```shell
-python -m main
+python src/main.py
 ```
 
-To run tests you can use the following command:
+Run the tests with the following command:
 ```shell
-python -m pytest 
+pytest src/ 
 ```
+
+The answers to the questions of the second part of challenge are available [here](answers_to_challenge_questions.md).
